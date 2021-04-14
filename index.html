@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta charset="utf-8">
+       <title>DuckedIn</title>
+    </head>
+
+    <body>
+        <div>
+            <h1>DuckedIn</h1>
+        </div>
+
+        <div>
+            <h2>Login Page</h2>
+        </div>
+
+
+        <div>
+            <!--enter username and password, requires sql interaction-->
+            <label for="username">User name:</label>
+            <input type="text" id="username" name="username">
+
+            <label for="password">First name:</label>
+            <input type="text" id="password" name="password">
+
+            <button type='button' onclick="check_login();">Log in</button>
+            <!--This should query the SQL database to see if this is an appropriate username and password-->
+            
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+            <script>
+                function createCookie(key, value, date) {
+                    const expiration = new Date(date).toUTCString();
+                    const cookie = escape(key) + "=" + escape(value) + ";expires=" + expiration + ";";
+                    document.cookie = cookie;
+                    console.log(cookie);
+                    console.log("Creating new cookie with key: " + key + " value: " + value + " expiration: " + expiration);
+                }
+
+                function check_login(){
+                    axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
+                    .then( response => {
+                        var users = response.data;
+                        var username = document.getElementById("username").value;
+                        var password = document.getElementById('password').value;
+                        for (i=0; i < users.length; i++){
+                            if (users[i].Username == username && users[i].Password == password){
+                                createCookie('ISID', users[i].ISID, Date.UTC(2022, 8, 1));
+                            }
+                        }
+                    });
+                }
+                
+                
+                function readCookie(name) {
+                    let key = name + "=";
+                    let cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        let cookie = cookies[i];
+                        while (cookie.charAt(0) === ' ') {
+                            cookie = cookie.substring(1, cookie.length);
+                        }
+                        if (cookie.indexOf(key) === 0) {
+                            return cookie.substring(key.length, cookie.length);
+                        }
+                    }
+                    return null;
+                }
+
+
+            </script>
+
+            
+
+        </div>
+
+
+        <div>
+            <!--link to create an account-->
+            <a href="createAccount/createAccount.html">Create Account</a>
+        </div>
+
+
+
+
+    </body>
+
+
+
+</html>
+
