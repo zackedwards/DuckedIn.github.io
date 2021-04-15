@@ -66,18 +66,6 @@
                 }
                 };
 
-                function getvalues(){
-                    createCookie('first', document.getElementById('firstname').value);
-                    createCookie('last', document.getElementById('lastname').value);
-                    createCookie('username', document.getElementById('username').value);
-                    createCookie('passw', crypt.encrypt(document.getElementById('password').value));
-                    createCookie('major', document.getElementById('major').value);
-                    createCookie('grad', document.getElementById('gradyear').value);
-                    createCookie('job', document.getElementById('jobexp').value);
-                    createCookie('curr', document.getElementById('currentemp').value);
-                    createCookie('age', document.getElementById('age').value);
-                }
-
                 function createCookie(key, value) {
                     const cookie = escape(key) + "=" + escape(value);
                     document.cookie = cookie;
