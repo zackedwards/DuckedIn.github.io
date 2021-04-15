@@ -87,10 +87,10 @@
                             }
                             if(i == users.length){
                                 condition = false;
-                                const cookie = escape(key) + "=" + escape(value) + ";expires=" + expiration + ";";
+                                const cookie = escape('ISID') + "=" + escape(isid);
                                 document.cookie = cookie;
                                 console.log(cookie);
-                                console.log("Creating new cookie with key: " + key + " value: " + value);
+                                console.log("Creating new cookie with key: ISID value: " + isid);
                             }
                         }
                 });
