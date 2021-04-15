@@ -13,31 +13,32 @@
             <!--/database_file.sql is the file where the data will be stored; this is not the actual name-->
             <div class = "create">
                 <form database = "/database_file.sql">
-                    <label>First Name: </label>
+                    <br>
+                    <label>First Name: </label><br>
                     <input type = "text" id = "firstname"><br>
 
-                    <label>Last Name: </lable>
+                    <label>Last Name: </lable><br>
                     <input type = "text" id = "lastname"><br>
 
-                    <label>Username: </label>
+                    <label>Username: </label><br>
                     <input type = "text" id = "username"><br>
                 
-                    <label>Password: </label>
+                    <label>Password: </label><br>
                     <input type = "text" id = "password"><br>
 
-                    <label>Age: </label>
+                    <label>Age: </label><br>
                     <input type = "text" id = "age"><br>
 
-                    <label>Major: </label>
+                    <label>Major: </label><br>
                     <input type = "text" id = "major"><br>
 
-                    <label>Graduation Year: </label>
+                    <label>Graduation Year: </label><br>
                     <input type = "text" id = "gradyear"><br>
 
-                    <label>Job Experience: </label>
+                    <label>Job Experience: </label><br>
                     <input type = "text" id = "jobexp"><br>
 
-                    <label>Current Employment: </label>
+                    <label>Current Employment: </label><br>
                     <input type = "text" id = "currentemp"><br><br>
                 
                     <!--Button to submit all the info to the database-->
@@ -78,7 +79,7 @@
                     var job = document.getElementById('jobexp').value;
                     var current = document.getElementById('currentemp').value;
                     var age = document.getElementById('age').value;
-                    create();
+                    var call = create();
                     var values = {"ISID": readCookie('ISID'), "First_Name": firstname, "Last_Name": lastname, "Age": age, "Password": password, "Username": username, "Major": major, "Graduation_Year": gradyear, "Job_Experience": job, "Current_Employment": current};
                     console.log(values);
                     return values
