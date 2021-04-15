@@ -4,6 +4,7 @@
 body {
     background: linear-gradient(0deg,#9A989A 80%,#A32638 20%);
     background-attachment: static;
+    background-repeat: no-repeat;
 }
 
 ul {
@@ -33,4 +34,8 @@ li a:hover {
 
 .active {
     background-color: #9A989A;
+}
+
+h1{
+    text-align: center;
 }

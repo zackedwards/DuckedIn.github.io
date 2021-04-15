@@ -4,4 +4,5 @@
 body {
     background: linear-gradient(0deg,#9A989A 80%,#A32638 20%);
     background-attachment: static;
+    background-repeat: no-repeat;
 }

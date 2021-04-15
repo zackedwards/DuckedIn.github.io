@@ -44,12 +44,28 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
         <script>
+
+            function readCookie(name) {
+                let key = name + "=";
+                let cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    let cookie = cookies[i];
+                    while (cookie.charAt(0) === ' ') {
+                        cookie = cookie.substring(1, cookie.length);
+                    }
+                    if (cookie.indexOf(key) === 0) {
+                        return cookie.substring(key.length, cookie.length);
+                    }
+                }
+                return null;
+            }
+
             axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
             .then( response => {
                 var users = response.data;
 
                 for (i=0; i < users.length; i++){
-                    if (users[i].ISID == 156789){
+                    if (users[i].ISID == readCookie(ISID)){
 
                         console.log(users[i]);
 
