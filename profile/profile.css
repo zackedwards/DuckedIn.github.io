@@ -1,0 +1,48 @@
+/*applies font to whole page*/
+*{font-family: Arial, Helvetica, sans-serif}
+
+/*Might have to take out the red section of the gradiant since the site page selector is red*/
+body {
+    background: linear-gradient(0deg,#9A989A 80%,#A32638 20%);
+    background-attachment: scroll;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #A32638;
+}
+  
+li {
+    float: left;
+}
+  
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+  
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #111;
+}
+
+.active {
+    background-color: #9A989A;
+    /*was #4CAF50 (green)*/
+}
+
+h2 {
+    text-align: left;
+    font-size: 28px;
+}
+
+.user{
+    text-align: left;
+    font-size: 24px;
+}

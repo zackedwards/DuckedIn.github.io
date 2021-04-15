@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta charset="utf-8">
+       <title>DuckedIn</title>
+       <link rel="stylesheet" href="index.css">
+    </head>
+
+    <body>
+        <div>
+            <h1>DuckedIn</h1>
+        </div>
+
+        <!--Might need some <br> after login page for the css formatting-->
+        <div>
+            <h2>Login Page</h2>
+        </div>
+
+
+        <div class = "login">
+            <!--enter username and password, requires sql interaction-->
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"><br>
+
+            <label for="password">Password:</label>
+            <input type="text" id="password" name="password"><br><br>
+
+            <button type='button' onclick="check_login();">Log in</button>
+            <!--This should query the SQL database to see if this is an appropriate username and password-->
+            
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+            <script>
+
+                var crypt = {
+                // (B1) THE SECRET KEY
+                secret : "vtJHEGLQerdNhsmnsG1R26K0aAm1wp5kPrhlUp50xU3T2pVwaJpiqErNLH3tUlAIemKXre4gpW5DFk16eyH6qRr5kQIhmR7lewsZtkB9JiauEOLR3bL9XQbBbY12unTW",
+                
+                // (B2) ENCRYPT
+                encrypt : function (clear) {
+                    var cipher = CryptoJS.AES.encrypt(clear, crypt.secret);
+                    cipher = cipher.toString();
+                    return cipher;
+                },
+                
+                // (B3) DECRYPT
+                decrypt : function (cipher) {
+                    var decipher = CryptoJS.AES.decrypt(cipher, crypt.secret);
+                    decipher = decipher.toString(CryptoJS.enc.Utf8);
+                    return decipher;
+                }
+                };
+
+                function createCookie(key, value, date) {
+                    const expiration = new Date(date).toUTCString();
+                    const cookie = escape(key) + "=" + escape(value) + ";expires=" + expiration + ";";
+                    document.cookie = cookie;
+                    console.log(cookie);
+                    console.log("Creating new cookie with key: " + key + " value: " + value + " expiration: " + expiration);
+                }
+
+                function check_login(){
+                    axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
+                    .then( response => {
+                        var users = response.data;
+                        var username = document.getElementById("username").value;
+                        var password = document.getElementById('password').value;
+                        for (i=0; i < users.length; i++){
+                            if (users[i].Username == username && crypt.decrypt(users[i].Password) == password){
+                                createCookie('ISID', users[i].ISID, Date.UTC(2022, 8, 1));
+                                window.location.href = '/homepage/homepage.html'
+                            }
+                        }
+                        
+                    });
+                }
+                
+                
+                function readCookie(name) {
+                    let key = name + "=";
+                    let cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        let cookie = cookies[i];
+                        while (cookie.charAt(0) === ' ') {
+                            cookie = cookie.substring(1, cookie.length);
+                        }
+                        if (cookie.indexOf(key) === 0) {
+                            return cookie.substring(key.length, cookie.length);
+                        }
+                    }
+                    return null;
+                }
+
+
+            </script>
+
+            
+
+        </div>
+
+
+        <div>
+            <!--link to create an account-->
+            <a href="createAccount/createAccount.html">Create Account</a>
+        </div>
+
+
+
+
+    </body>
+
+
+
+</html>
+
