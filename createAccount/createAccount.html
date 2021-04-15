@@ -76,7 +76,7 @@
                 axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
                     .then( response => {
                         var users = response.data;
-                        var condition = True;
+                        var condition = true;
                         while(condition){
                             var isid = Math.floor(Math.random() * 100000)
                             for (i=0; i < users.length; i++){
@@ -85,7 +85,7 @@
                                 }
                             }
                             if(i == users.length){
-                                condition = False;
+                                condition = false;
                             }
                         }
                 });
@@ -94,18 +94,11 @@
                     "data": {"ISID": isid, "First_Name": firstname, "Last_Name": lastname, "Age": age, "Password": password, "Username": username, "Major": major, "Graduation_Year": gradyear, "Job_Experience": job, "Current_Employment": current}
                 }).then( response => {
                     console.log(response.data);
+                    window.location.href = '../homepage/homepage.html'
                 });
             </script>
 
             <p>Create new account page works</p>
-
-
-
-
-
-
-
-
 
 
     </body>

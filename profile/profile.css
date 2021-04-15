@@ -4,7 +4,8 @@
 /*Might have to take out the red section of the gradiant since the site page selector is red*/
 body {
     background: linear-gradient(0deg,#9A989A 80%,#A32638 20%);
-    background-attachment: scroll;
+    background-attachment: static;
+    
 }
 
 ul {
@@ -39,10 +40,45 @@ li a:hover {
 
 h2 {
     text-align: left;
-    font-size: 28px;
+    font-size: 32px;
 }
 
 .user{
     text-align: left;
+    font-size: 28px;
+}
+
+.name{
+    text-align: left;
     font-size: 24px;
+}
+
+.age{
+    text-align: left;
+    font-size: 24px;
+}
+
+.major{
+    text-align: left;
+    font-size: 24px;
+}
+
+.grad{
+    text-align: left;
+    font-size: 24px;
+}
+
+.employ{
+    text-align: left;
+    font-size: 24px;
+}
+
+.exper{
+    text-align: left;
+    font-size: 24px;
+}
+
+hr{
+    border-top: 5px solid black;
+    margin: 2em 0;
 }

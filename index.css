@@ -3,7 +3,7 @@
 
 body {
     background: linear-gradient(0deg,#9A989A 80%,#A32638 20%);
-    background-attachment: scroll;
+    background-attachment: static;
 }
 
 h1 {
@@ -18,6 +18,6 @@ h2 {
     margin-left: auto; margin-right:auto;
     border: 1px solid black;
     background-color: white;
-    width: 400px;
-    height: 400px;
+    width: 200px;
+    height: 200px;
 }
