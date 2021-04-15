@@ -2,7 +2,7 @@
 *{font-family: Arial, Helvetica, sans-serif}
 
 body {
-    background: linear-gradient(0deg,#9A989A 80%,#A32638 20%);
+    background: linear-gradient(0deg,#F5F1E4  80%,#A32638 20%);
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 100%;
@@ -35,7 +35,7 @@ li a:hover {
 }
 
 .active {
-    background-color: #9A989A;
+    background-color: #F5F1E4 ;
 }
 
 h1{

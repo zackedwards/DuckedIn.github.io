@@ -73,6 +73,7 @@
                 var gradyear = document.getElementById('gradyear').value;
                 var job = document.getElementById('jobexp').value;
                 var current = document.getElementById('currentemp').value;
+                console.log({"ISID": readCookie('ISID'), "First_Name": firstname, "Last_Name": lastname, "Age": age, "Password": password, "Username": username, "Major": major, "Graduation_Year": gradyear, "Job_Experience": job, "Current_Employment": current})
 
                 axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
                     .then( response => {
