@@ -11,38 +11,36 @@
         <br>
         <h2>Create A Profile</h2>
             <div class = "create">
-                <form>
-                    <br>
-                    <label>First Name: </label><br>
-                    <input type = "text" id = "firstname"><br>
+                <br>
+                <label>First Name: </label><br>
+                <input type = "text" id = "firstname"><br>
 
-                    <label>Last Name: </lable><br>
-                    <input type = "text" id = "lastname"><br>
+                <label>Last Name: </lable><br>
+                <input type = "text" id = "lastname"><br>
 
-                    <label>Username: </label><br>
-                    <input type = "text" id = "username"><br>
-                
-                    <label>Password: </label><br>
-                    <input type = "text" id = "password"><br>
+                <label>Username: </label><br>
+                <input type = "text" id = "username"><br>
+            
+                <label>Password: </label><br>
+                <input type = "text" id = "password"><br>
 
-                    <label>Age: </label><br>
-                    <input type = "text" id = "age"><br>
+                <label>Age: </label><br>
+                <input type = "text" id = "age"><br>
 
-                    <label>Major: </label><br>
-                    <input type = "text" id = "major"><br>
+                <label>Major: </label><br>
+                <input type = "text" id = "major"><br>
 
-                    <label>Graduation Year: </label><br>
-                    <input type = "text" id = "gradyear"><br>
+                <label>Graduation Year: </label><br>
+                <input type = "text" id = "gradyear"><br>
 
-                    <label>Job Experience: </label><br>
-                    <input type = "text" id = "jobexp"><br>
+                <label>Job Experience: </label><br>
+                <input type = "text" id = "jobexp"><br>
 
-                    <label>Current Employment: </label><br>
-                    <input type = "text" id = "currentemp"><br><br>
-                
-                    <!--Button to submit all the info to the database-->
-                    <button id=submit_account onclick='postValues()'>Submit</button>
-                </form>
+                <label>Current Employment: </label><br>
+                <input type = "text" id = "currentemp"><br><br>
+            
+                <!--Button to submit all the info to the database-->
+                <button id=submit_account onclick='postValues()'>Submit</button>
             </div>
 
             <script src="//cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
@@ -123,12 +121,25 @@
                 }
 
                 function postValues(){
+                    var fname = document.getElementById('firstname').value;
+                    var lname = document.getElementById('lastname').value;
+                    var ag = document.getElementById('age').value;
+                    var pword = crypt.encrypt(document.getElementById('password').value);
+                    var uname = document.getElementById('username').value;
+                    var jobx = document.getElementById('jobexp').value;
+                    var grad = document.getElementById('gradyear').value;
+                    var maj = document.getElementById('major').value;
+                    var curr = document.getElementById('currentemp').value;
+
                     axios.post('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data',{
-                        "data": [{"ISID": readCookie('ISID'), "First_Name": document.getElementById('firstname').value, "Last_Name": document.getElementById('lastname').value, "Age": document.getElementById('age').value, "Password": crypt.encrypt(document.getElementById('password').value), "Username": document.getElementById('username').value, "Major": document.getElementById('jobexp').value, "Graduation_Year": document.getElementById('gradyear').value, "Job_Experience": document.getElementById('gradyear').value, "Current_Employment": document.getElementById('currentemp').value}]
+                        "data": [{"ISID": readCookie('ISID'), "First_Name": fname, "Last_Name": lname, "Age": ag, "Password": pword, "Username": uname, "Major": maj, "Graduation_Year": grad, "Job_Experience": jobx, "Current_Employment": curr}]
                     }).then( response => {
                         console.log(response.data);
+                        window.location.href = '../homepage/homepage.html';
+                    })
+                    .catch(function (error) {
+                        console.log(error);
                     });
-                    window.location.href = '../homepage/homepage.html';
                 }
             </script>
 
