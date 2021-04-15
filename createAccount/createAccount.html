@@ -74,7 +74,7 @@
                     createCookie('username', document.getElementById('username').value);
                     createCookie('passw', crypt.encrypt(document.getElementById('password').value));
                     createCookie('major', document.getElementById('major').value);
-                    createCookie('grad',document.getElementById('gradyear').value);
+                    createCookie('grad', document.getElementById('gradyear').value);
                     createCookie('job', document.getElementById('jobexp').value);
                     createCookie('curr', document.getElementById('currentemp').value);
                     createCookie('age', document.getElementById('age').value);
@@ -123,9 +123,18 @@
                 }
 
                 function postValues(){
-                    getvalues();
                     axios.post('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data',{
-                        "data": {"ISID": readCookie('ISID'), "First_Name": readCookie('first'), "Last_Name": readCookie('last'), "Age": readCookie('age'), "Password": readCookie('passw'), "Username": readCookie('username'), "Major": readCookie('major'), "Graduation_Year": readCookie('grad'), "Job_Experience": readCookie('job'), "Current_Employment": readCookie('curr')}
+                        "data": {"ISID": readCookie('ISID'), 
+                            "First_Name": document.getElementById('firstname').value, 
+                            "Last_Name": document.getElementById('lastname').value, 
+                            "Age": document.getElementById('age').value, 
+                            "Password": crypt.encrypt(document.getElementById('password').value), 
+                            "Username": document.getElementById('username').value, 
+                            "Major": document.getElementById('jobexp').value, 
+                            "Graduation_Year": document.getElementById('gradyear').value, 
+                            "Job_Experience": document.getElementById('gradyear').value, 
+                            "Current_Employment": document.getElementById('currentemp').value
+                        }
                     }).then( response => {
                         console.log(response.data);
                         window.location.href = '../homepage/homepage.html'
