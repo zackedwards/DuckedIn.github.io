@@ -42,7 +42,7 @@
                     <input type = "text" id = "currentemp"><br><br>
                 
                     <!--Button to submit all the info to the database-->
-                    <button id=submit_account onclick='post()'>Submit</button>
+                    <button id=submit_account onclick='create()'>Submit</button>
                 </form>
             </div>
 
@@ -79,34 +79,33 @@
                     var job = document.getElementById('jobexp').value;
                     var current = document.getElementById('currentemp').value;
                     var age = document.getElementById('age').value;
-                    var call = create();
                     var values = {"ISID": readCookie('ISID'), "First_Name": firstname, "Last_Name": lastname, "Age": age, "Password": password, "Username": username, "Major": major, "Graduation_Year": gradyear, "Job_Experience": job, "Current_Employment": current};
                     console.log(values);
                     return values
                 }
 
-                function create(){
-                    axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
-                        .then( response => {
-                            var users = response.data;
-                            var condition = true;
-                            while(condition){
-                                var isid = Math.floor(Math.random() * 100000)
-                                for (i=0; i < users.length; i++){
-                                    if(users[i].ISID == isid){
-                                        break;
-                                    }
-                                }
-                                if(i == users.length){
-                                    condition = false;
-                                    const cookie = escape('ISID') + "=" + escape(isid);
-                                    document.cookie = cookie;
-                                    console.log(cookie);
-                                    console.log("Creating new cookie with key: ISID value: " + isid);
+                
+                axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
+                    .then( response => {
+                        var users = response.data;
+                        var condition = true;
+                        while(condition){
+                            var isid = Math.floor(Math.random() * 100000)
+                            for (i=0; i < users.length; i++){
+                                if(users[i].ISID == isid){
+                                    break;
                                 }
                             }
-                    });
-                }
+                            if(i == users.length){
+                                condition = false;
+                                const cookie = escape('ISID') + "=" + escape(isid);
+                                document.cookie = cookie;
+                                console.log(cookie);
+                                console.log("Creating new cookie with key: ISID value: " + isid);
+                            }
+                        }
+                });
+                
 
                 function readCookie(name) {
                     let key = name + "=";
@@ -123,9 +122,11 @@
                     return null;
                 }
 
-                function post(){
+                function create(){
+                    var data = getvalues();
+                    console.log(data);
                     axios.post('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data',{
-                        "data": getvalues()
+                        "data": data
                     }).then( response => {
                         console.log(response.data);
                         //window.location.href = '../homepage/homepage.html'
