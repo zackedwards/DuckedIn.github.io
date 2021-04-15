@@ -42,7 +42,7 @@
                     <input type = "text" id = "currentemp"><br><br>
                 
                     <!--Button to submit all the info to the database-->
-                    <button id=submit_account onclick='create()'>Submit</button>
+                    <button id=submit_account onclick='postValues()'>Submit</button>
                 </form>
             </div>
 
@@ -122,15 +122,15 @@
                     return null;
                 }
 
-
-                var data = getvalues();
-                axios.post('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data',{
-                    "data": data
-                }).then( response => {
-                    console.log(response.data);
-                    window.location.href = '../homepage/homepage.html'
-                });
-                
+                function postValues(){
+                    var data = getvalues();
+                    axios.post('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data',{
+                        "data": data
+                    }).then( response => {
+                        console.log(response.data);
+                        window.location.href = '../homepage/homepage.html'
+                    });
+                }
             </script>
 
     </body>
