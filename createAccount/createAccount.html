@@ -10,7 +10,8 @@
         <br>
         <br>
         <h2>Create A Profile</h2>
-            <div class = "create">
+            <div class = "create">              
+                <!-- You can use a form to help you with user inputs. Look up http POST and GET requests with forms -->
                 <br>
                 <label>First Name: </label><br>
                 <input type = "text" id = "firstname"><br>
@@ -40,9 +41,11 @@
                 <input type = "text" id = "currentemp"><br><br>
             
                 <!--Button to submit all the info to the database-->
+                <!-- You shoudl reroute your user to a new page after submission. This can be done with routes in Javascript. -->
                 <button id=submit_account onclick='postValues()'>Submit</button>
             </div>
-
+            <!-- I HIGHLY RECOMMEND USING A JAVASCRIPT FOLDER THAN IN LINE. THIS IS GROSS AND WILL BE A LOT EASIER TO UNDERSTAND IF YOU REFERENCE FUNCTIONS IN A 
+                SEPARATE FILE -->
             <script src="//cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
             <script>
