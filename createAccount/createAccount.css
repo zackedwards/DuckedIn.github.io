@@ -1,0 +1,7 @@
+/*applies font to whole page*/
+*{font-family: Arial, Helvetica, sans-serif}
+
+body {
+    background: linear-gradient(0deg,#9A989A 80%,#A32638 20%);
+    background-attachment: scroll;
+}
