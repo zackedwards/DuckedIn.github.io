@@ -6,7 +6,7 @@
        <link rel="stylesheet" href="index.css">
     </head>
 
-    <body>
+    <body onload="cookieAlert()">
         <div>
             <h1>DuckedIn</h1>
         </div>
@@ -20,6 +20,12 @@
         <div class = "login">
             <!--<br> for spacing purposes-->
             <br><br>
+<<<<<<< Updated upstream
+=======
+
+            <p id='incorrect'></p>
+
+>>>>>>> Stashed changes
             <!--enter username and password, requires sql interaction-->
             <label for="username">Username:</label>
             <input type="text" id="username" name="username"><br>
@@ -29,38 +35,8 @@
 
             <button type='button' onclick="check_login();">Log in</button>
             <!--This should query the SQL database to see if this is an appropriate username and password-->
-            
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
-            <script>
 
-                var crypt = {
-                // (B1) THE SECRET KEY
-                secret : "vtJHEGLQerdNhsmnsG1R26K0aAm1wp5kPrhlUp50xU3T2pVwaJpiqErNLH3tUlAIemKXre4gpW5DFk16eyH6qRr5kQIhmR7lewsZtkB9JiauEOLR3bL9XQbBbY12unTW",
-                
-                // (B2) ENCRYPT
-                encrypt : function (clear) {
-                    var cipher = CryptoJS.AES.encrypt(clear, crypt.secret);
-                    cipher = cipher.toString();
-                    return cipher;
-                },
-                
-                // (B3) DECRYPT
-                decrypt : function (cipher) {
-                    var decipher = CryptoJS.AES.decrypt(cipher, crypt.secret);
-                    decipher = decipher.toString(CryptoJS.enc.Utf8);
-                    return decipher;
-                }
-                };
-
-                function createCookie(key, value, date) {
-                    const expiration = new Date(date).toUTCString();
-                    const cookie = escape(key) + "=" + escape(value) + ";expires=" + expiration + ";";
-                    document.cookie = cookie;
-                    console.log(cookie);
-                    console.log("Creating new cookie with key: " + key + " value: " + value + " expiration: " + expiration);
-                }
-
+<<<<<<< Updated upstream
                 function check_login(){
                     axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
                     .then( response => {
@@ -95,6 +71,13 @@
 
 
             </script>
+=======
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+            <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+            <script src="https://<databasename>.restdb.io/assets/js/eventsource.min.js"></script>
+            <script src="https://<databasename>.restdb.io/rest/_jsapi.js"></script>
+            <script src="index.js"></script>
+>>>>>>> Stashed changes
 
             <!--link to create an account-->
             <br>

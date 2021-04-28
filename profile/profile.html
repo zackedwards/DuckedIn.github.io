@@ -12,98 +12,43 @@
             <li><a href="../connections/connections.html">Connections</a></li>
             <li><a href="../newPost/newPost.html">Create a Post</a></li>
             <li style="float:right"><a class="active" href="../profile/profile.html">Profile</a></li>
+            <li style="float:right"><a href="../index.html", onclick="logout()">Logout</a></li>
         </ul>
 
         <!--Between these comments is where the actual body is-->
-        <h2>Profile</h2>
+        <h2>Profile</h2><br><br><br>
         
-        <h1 class = "user">Username: </h1>
-        <p id = 'info'></p>
+        <div class = "prof">
+            <h1 class = "user">Username: </h1>
+            <p id = 'info'></p>
 
-        <h1 class = "name">Name: </h1> 
-        <p id = 'info'></p>
+            <h1 class = "name">Name: </h1> 
+            <p id = 'info'></p>
 
-        <h1 class = "age">Age: </h1> 
-        <p id = 'info'></p>
+            <h1 class = "age">Age: </h1> 
+            <p id = 'info'></p>
 
-        <h1 class = "major">Major: </h1> 
-        <p id = 'info'></p>
+            <h1 class = "major">Major: </h1> 
+            <p id = 'info'></p>
 
-        <h1 class = "grad">Graduation Year: </h1> 
-        <p id = 'info'></p>
+            <h1 class = "grad">Graduation Year: </h1> 
+            <p id = 'info'></p>
 
-        <h1 class = "employ">Current Employment: </h1> 
-        <p id = 'info'></p>
+            <h1 class = "employ">Current Employment: </h1> 
+            <p id = 'info'></p>
 
-        <h1 class = "exper">Job Experience: </h1> 
-        <p id = 'info'></p>
-        <!--Between these comments is where the actual body is-->
+            <h1 class = "exper">Job Experience: </h1> 
+            <p id = 'info'></p>
+            <!--Between these comments is where the actual body is-->
 
-        <!--<hr/> adds a horizontal line-->
-        <hr/>
+            <!--<hr/> adds a horizontal line-->
+            <!--<hr/>-->
+        </div>
 
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
-        <script>
-
-            function readCookie(name) {
-                let key = name + "=";
-                let cookies = document.cookie.split(';');
-                for (let i = 0; i < cookies.length; i++) {
-                    let cookie = cookies[i];
-                    while (cookie.charAt(0) === ' ') {
-                        cookie = cookie.substring(1, cookie.length);
-                    }
-                    if (cookie.indexOf(key) === 0) {
-                        return cookie.substring(key.length, cookie.length);
-                    }
-                }
-                return null;
-            }
-
-            axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
-            .then( response => {
-                var users = response.data;
-
-                for (i=0; i < users.length; i++){
-                    if (users[i].ISID == readCookie('ISID')){
-
-                        console.log(users[i]);
-
-                        var uname = document.getElementsByTagName('p')[0];
-                        celltext = document.createTextNode(users[i].Username)
-                        uname.appendChild(celltext);
-
-                        var name = document.getElementsByTagName('p')[1];
-                        celltext = document.createTextNode(users[i].First_Name)
-                        name.appendChild(celltext);
-
-                        var uname = document.getElementsByTagName('p')[1];
-                        celltext = document.createTextNode(" " + users[i].Last_Name)
-                        uname.appendChild(celltext);
-
-                        var uname = document.getElementsByTagName('p')[2];
-                        celltext = document.createTextNode(users[i].Age)
-                        uname.appendChild(celltext);
-
-                        var uname = document.getElementsByTagName('p')[3];
-                        celltext = document.createTextNode(users[i].Major)
-                        uname.appendChild(celltext);
-
-                        var uname = document.getElementsByTagName('p')[4];
-                        celltext = document.createTextNode(users[i].Graduation_Year)
-                        uname.appendChild(celltext);
-
-                        var uname = document.getElementsByTagName('p')[5];
-                        celltext = document.createTextNode(users[i].Current_Employment)
-                        uname.appendChild(celltext);
-
-                        var uname = document.getElementsByTagName('p')[6];
-                        celltext = document.createTextNode(users[i].Job_Experience)
-                        uname.appendChild(celltext);
-                    }
-                }
-            });
-        </script>
+        <script src="profile.js"></script>
+        
         
 
     </body>

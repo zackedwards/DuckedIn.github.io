@@ -40,4 +40,7 @@ li a:hover {
 
 h1{
     text-align: center;
+    color: white;
+    -webkit-text-stroke: 1px black;
+    /*-webbkit-text-fill-color: white; do this if font doesn't fill white*/
 }

@@ -37,3 +37,16 @@ li a:hover {
 .active {
     background-color: #690312 ;
 }
+
+h1{
+    text-align: left;
+    color: white;
+    -webkit-text-stroke: 1px black;
+    /*-webbkit-text-fill-color: white; do this if font doesn't fill white*/
+    margin-left: 15px;
+}
+
+form {
+    margin-left: 15px;
+    border-radius: 30px;
+}
