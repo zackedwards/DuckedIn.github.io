@@ -51,9 +51,10 @@ function submit(){
 
     var username = document.getElementById('newConnection').value;
     console.log(username)
-    var connections = connections +' '+username;
+    var connections = readCookie('connects') +' '+username;
     console.log(connections);
-    var link = 'https://sheetdb.io/api/v1/9kxufr2k05mi6/search?ISID=' + isid;
+    //var link = 'https://sheetdb.io/api/v1/9kxufr2k05mi6/search?ISID=' + isid;
+    var link = 'https://sheetdb.io/api/v1/9kxufr2k05mi6/Client_Data/ISID/'+isid;
     console.log(link);
 
     axios.patch(link, {
