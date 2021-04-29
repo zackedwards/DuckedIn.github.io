@@ -39,3 +39,9 @@ function readCookie(name) {
     }
     return null;
 }
+
+function revealForm(){
+    document.getElementById('newConnection').innerHTML = '<h3> Enter a Username for a new connection here!  </h3>';
+    document.getElementById('newConnection').innerHTML += '<textarea id = "newConnection" name="newConnect" rows = "2" cols = "70"></textarea><br><br>';
+    document.getElementById('newConnection').innerHTML += '<input type="submit" value="Submit">';
+}
