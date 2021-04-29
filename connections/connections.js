@@ -50,6 +50,7 @@ function submit(){
             for (i=0; i < users.length; i++){
                 if(users[i].ISID == isid){
                     var connections = users[i].Connected_Usernames;
+                    console.log(connections);
                     break;
                 }
             }
@@ -58,6 +59,7 @@ function submit(){
     });
     var link = 'https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Post_Data/ISID/' + isid;
     console.log(link);
+
     axios.patch(link,{
         "data": {'Connected_Usernames': connections}
     }).then( response => {
