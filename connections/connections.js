@@ -5,7 +5,7 @@ axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
         var users = response.data;
         for (i=0; i < users.length; i++){
             if(users[i].ISID == isid){
-                var connections = users[i].Connected_Usernames
+                var connections = users[i].Connected_Usernames;
                 break;
             }
         }
@@ -49,16 +49,17 @@ function submit(){
             var users = response.data;
             for (i=0; i < users.length; i++){
                 if(users[i].ISID == isid){
-                    var connections = users[i].Connected_Usernames
+                    var connections = users[i].Connected_Usernames;
                     break;
                 }
             }
             connections+=' '+username;
-            axios.patch(link,{
-                "data": {'Connected_Usernames': connections}
-            }).then( response => {
-                console.log(response.data);
-            });
+            console.log(connections);
+    });
+    axios.patch(link,{
+        "data": {'Connected_Usernames': connections}
+    }).then( response => {
+        console.log(response.data);
     });
 }
 
