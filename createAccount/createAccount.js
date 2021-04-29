@@ -26,25 +26,25 @@ function createCookie(key, value, date) {
 }
 
 
-
-axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
-    .then( response => {
-        var users = response.data;
-        var condition = true;
-        while(condition){
-            var isid = Math.floor(Math.random() * 100000)
-            for (i=0; i < users.length; i++){
-                if(users[i].ISID == isid){
-                    break;
+window.onload = function() {
+    axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
+        .then( response => {
+            var users = response.data;
+            var condition = true;
+            while(condition){
+                var isid = Math.floor(Math.random() * 100000)
+                for (i=0; i < users.length; i++){
+                    if(users[i].ISID == isid){
+                        break;
+                    }
+                }
+                if(i == users.length){
+                    condition = false;
+                    createCookie('ISID', isid, Date.UTC(2022, 8, 1));
                 }
             }
-            if(i == users.length){
-                condition = false;
-                createCookie('ISID', isid, Date.UTC(2022, 8, 1));
-            }
-        }
-});
-
+    });
+}
 
 function readCookie(name) {
     let key = name + "=";
