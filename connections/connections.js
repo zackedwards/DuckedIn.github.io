@@ -17,7 +17,7 @@ axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
             }
         }
         createCookie('connects', connections);
-        connections = connections.split(" ");
+        connections = connections.split("%");
         for(j=0; j<connections.length; j++){
             for(k=0; k<users.length; k++){
                 if(users[k].Username == connections[j]){
@@ -51,10 +51,10 @@ function submit(){
 
     var username = document.getElementById('newConnection').value;
     console.log(username)
-    var connections = readCookie('connects') +' '+username;
+    var connections = readCookie('connects') +'%'+username;
     console.log(connections);
-    //var link = 'https://sheetdb.io/api/v1/9kxufr2k05mi6/search?ISID=' + isid;
-    var link = 'https://sheetdb.io/api/v1/9kxufr2k05mi6/Client_Data/ISID/'+isid;
+    var link = 'https://sheetdb.io/api/v1/9kxufr2k05mi6/search?ISID=' + isid;
+    //var link = 'https://sheetdb.io/api/v1/9kxufr2k05mi6/Client_Data/ISID/'+isid;
     console.log(link);
 
     axios.patch(link, {
