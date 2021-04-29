@@ -49,12 +49,13 @@ function readCookie(name) {
 function submit(){
     var isid = readCookie('ISID');
 
-    var username = document.getElementById('newConnection').innerHTML;
+    var username = document.getElementById('newConnection').value;
+    console.log(username)
     var connections = connections +' '+username;
     console.log(connections);
     var link = 'https://sheetdb.io/api/v1/9kxufr2k05mi6/search?ISID=' + isid;
     console.log(link);
-    
+
     axios.patch(link, {
         "data": {'Connected_Usernames': connections}
     }).then( response => {
@@ -64,6 +65,6 @@ function submit(){
 
 function revealForm(){
     document.getElementById('connectionForm').innerHTML += '<h3> Enter a Username for a new connection here!  </h3>';
-    document.getElementById('connectionForm').innerHTML += '<textarea id = "newConnection" name="newConnect" rows = "2" cols = "70"></textarea><br><br>';
-    document.getElementById('connectionForm').innerHTML += '<input type="submit" value="Submit" onclick="submit()">';
+    document.getElementById('connectionForm').innerHTML += '<input type="text" id="newConnection"><br><br>';
+    document.getElementById('connectionForm').innerHTML += '<button onclick="submit()"></button>';
 }
