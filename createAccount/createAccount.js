@@ -17,12 +17,14 @@ decrypt : function (cipher) {
 }
 };
 
-function createCookie(key, value) {
-    const cookie = escape(key) + "=" + escape(value);
+function createCookie(key, value, date) {
+    const expiration = new Date(date).toUTCString();
+    const cookie = escape(key) + "=" + escape(value) + ";expires=" + expiration + ";";
     document.cookie = cookie;
     console.log(cookie);
-    console.log("Creating new cookie with key: " + key + " value: " + value);
+    console.log("Creating new cookie with key: " + key + " value: " + value + " expiration: " + expiration);
 }
+
 
 
 axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
@@ -38,7 +40,7 @@ axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
             }
             if(i == users.length){
                 condition = false;
-                createCookie('ISID', isid);
+                createCookie('ISID', isid, Date.UTC(2022, 8, 1));
             }
         }
 });
