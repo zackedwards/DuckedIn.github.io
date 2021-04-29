@@ -1,5 +1,12 @@
 var isid = readCookie('ISID');
 
+function createCookie(key, value) {
+    const cookie = escape(key) + "=" + escape(value);
+    document.cookie = cookie;
+    console.log(cookie);
+    console.log("Creating new cookie with key: " + key + " value: " + value);
+}
+
 axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
     .then( response => {
         var users = response.data;
@@ -9,6 +16,7 @@ axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
                 break;
             }
         }
+        createCookie('connects', connections);
         connections = connections.split(" ");
         for(j=0; j<connections.length; j++){
             for(k=0; k<users.length; k++){
@@ -22,7 +30,6 @@ axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
             }
         }
 });
-
 
 function readCookie(name) {
     let key = name + "=";
@@ -41,30 +48,13 @@ function readCookie(name) {
 
 function submit(){
     var isid = readCookie('ISID');
-    var link = 'https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Post_Data/ISID/' + isid;
+
     var username = document.getElementById('newConnection').innerHTML;
+    var connections = connections +' '+username;
+    console.log(connections);
+    var link = 'https://sheetdb.io/api/v1/9kxufr2k05mi6/search?ISID=' + isid;
 
-    axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
-        .then( response => {
-            var users = response.data;
-            console.log(users);
-            for (i=0; i < users.length; i++){
-                if(users[i].ISID == isid){
-                    var connections = users[i].Connected_Usernames;
-                    console.log(connections);
-                    break;
-                }
-            }
-            var connections = connections +' '+username;
-            console.log(connections);
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
-    var link = 'https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Post_Data/ISID/' + isid;
-    console.log(link);
-
-    axios.patch(link,{
+    axios.patch(link.concat(isid), {
         "data": {'Connected_Usernames': connections}
     }).then( response => {
         console.log(response.data);
