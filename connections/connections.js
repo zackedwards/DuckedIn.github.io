@@ -47,6 +47,7 @@ function submit(){
     axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
         .then( response => {
             var users = response.data;
+            console.log(users);
             for (i=0; i < users.length; i++){
                 if(users[i].ISID == isid){
                     var connections = users[i].Connected_Usernames;
