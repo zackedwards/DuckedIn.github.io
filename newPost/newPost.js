@@ -7,7 +7,7 @@ function postData(){
     var data = document.getElementById('newpost').innerHTML;
     console.log(data);
 
-    var data = document.getElementById('postTitle').innerHTML;
+    var title_data = document.getElementById('postTitle').innerHTML;
     console.log(title_data);
 
     axios.post('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Post_Data',{
@@ -15,7 +15,7 @@ function postData(){
     }).then( response => {
         console.log(response.data);
     });
-    
+
 
 }
 

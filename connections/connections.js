@@ -57,6 +57,9 @@ function submit(){
             }
             var connections = connections +' '+username;
             console.log(connections);
+    })
+    .catch(function (error) {
+        console.log(error);
     });
     var link = 'https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Post_Data/ISID/' + isid;
     console.log(link);
