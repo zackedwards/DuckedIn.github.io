@@ -1,3 +1,7 @@
+function cookieAlert(){
+    alert('You need cookies enabled in order to use this website!')
+}
+
 var crypt = {
 // (B1) THE SECRET KEY
 secret : "vtJHEGLQerdNhsmnsG1R26K0aAm1wp5kPrhlUp50xU3T2pVwaJpiqErNLH3tUlAIemKXre4gpW5DFk16eyH6qRr5kQIhmR7lewsZtkB9JiauEOLR3bL9XQbBbY12unTW",
@@ -37,7 +41,7 @@ function check_login(){
                 window.location.href = 'homepage/homepage.html';
             }
         }
-        document.getElementById('incorrect').style.visibility = "visible";
+        document.getElementById('incorrect').innerHTML = "Incorrect Password or Username";
         
     });
 }
