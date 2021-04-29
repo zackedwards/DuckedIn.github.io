@@ -20,12 +20,9 @@
         <div class = "login">
             <!--<br> for spacing purposes-->
             <br><br>
-<<<<<<< Updated upstream
-=======
 
             <p id='incorrect'></p>
 
->>>>>>> Stashed changes
             <!--enter username and password, requires sql interaction-->
             <label for="username">Username:</label>
             <input type="text" id="username" name="username"><br>
@@ -36,48 +33,11 @@
             <button type='button' onclick="check_login();">Log in</button>
             <!--This should query the SQL database to see if this is an appropriate username and password-->
 
-<<<<<<< Updated upstream
-                function check_login(){
-                    axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
-                    .then( response => {
-                        var users = response.data;
-                        var username = document.getElementById("username").value;
-                        var password = document.getElementById('password').value;
-                        for (i=0; i < users.length; i++){
-                            if (users[i].Username == username && crypt.decrypt(users[i].Password) == password){
-                                createCookie('ISID', users[i].ISID, Date.UTC(2022, 8, 1));
-                                window.location.href = 'homepage/homepage.html';
-                            }
-                        }
-                        
-                    });
-                }
-                
-                
-                function readCookie(name) {
-                    let key = name + "=";
-                    let cookies = document.cookie.split(';');
-                    for (let i = 0; i < cookies.length; i++) {
-                        let cookie = cookies[i];
-                        while (cookie.charAt(0) === ' ') {
-                            cookie = cookie.substring(1, cookie.length);
-                        }
-                        if (cookie.indexOf(key) === 0) {
-                            return cookie.substring(key.length, cookie.length);
-                        }
-                    }
-                    return null;
-                }
-
-
-            </script>
-=======
             <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
             <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
             <script src="https://<databasename>.restdb.io/assets/js/eventsource.min.js"></script>
             <script src="https://<databasename>.restdb.io/rest/_jsapi.js"></script>
             <script src="index.js"></script>
->>>>>>> Stashed changes
 
             <!--link to create an account-->
             <br>

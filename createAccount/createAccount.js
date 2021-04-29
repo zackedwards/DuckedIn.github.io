@@ -19,7 +19,7 @@ decrypt : function (cipher) {
 
 function createCookie(key, value, date) {
     const expiration = new Date(date).toUTCString();
-    const cookie = escape(key) + "=" + escape(value) + ";expires=" + expiration + ";";
+    const cookie = key + "=" + value + "; Expires=" + expiration + ";";
     document.cookie = cookie;
     console.log(cookie);
     console.log("Creating new cookie with key: " + key + " value: " + value + " expiration: " + expiration);
@@ -52,29 +52,54 @@ function createCookie(key, value, date) {
 //     }
 // }
 // });
-let config = {
-    headers: {
-        Authorization: '1acf2e675715216ec9b736c94cc52fc10f4b8',
-        'Access-Control-Allow-Origin': '*',
-    }
-}
-axios.get('https://duckedin-2987.restdb.io/rest/client', config)
-    .then( response => {
-        var users = response.data;
-        var condition = true;
-        while(condition){
-            var isid = Math.floor(Math.random() * 100000)
-            for (i=0; i < users.length; i++){
-                if(users[i].ISID == isid){
-                    break;
+window.onload = function() {
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', "https://getpantry.cloud/apiv1/pantry/dd14b579-e07c-4fcc-8e08-534632eb36a9", true);
+    xhr.addEventListener("readystatechange", processRequest, false);
+    xhr.send();
+    xhr.onreadystatechange = processRequest;
+
+    function processRequest(e) {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            let content = JSON.parse(xhr.responseText);
+
+            var users = content.baskets;
+
+            var condition = true;
+            while(condition){
+                var isid = Math.floor(Math.random() * 100000)
+                for (i=0; i < users.length; i++){
+                    if(users[i].ISID == isid){
+                        break;
+                    }
+                }
+                if(i == users.length){
+                    condition = false;
+                    createCookie('ISID', isid, Date.UTC(2022, 8, 1));
                 }
             }
-            if(i == users.length){
-                condition = false;
-                createCookie('ISID', isid, Date.UTC(2022, 8, 1));
-            }
         }
-});
+    }
+};
+//pantry ID: dd14b579-e07c-4fcc-8e08-534632eb36a9
+
+// axios.get('https://duckedin-2987.restdb.io/rest/client', config)
+//     .then( response => {
+//         var users = response.data;
+//         var condition = true;
+//         while(condition){
+//             var isid = Math.floor(Math.random() * 100000)
+//             for (i=0; i < users.length; i++){
+//                 if(users[i].ISID == isid){
+//                     break;
+//                 }
+//             }
+//             if(i == users.length){
+//                 condition = false;
+//                 createCookie('ISID', isid, Date.UTC(2022, 8, 1));
+//             }
+//         }
+// });
 
 
 function readCookie(name) {
@@ -103,34 +128,29 @@ function postValues(){
     var maj = document.getElementById('major').value;
     var curr = document.getElementById('currentemp').value;
 
-//     var request = require(["request"]);
+    var data = JSON.stringify({"ISID": readCookie('ISID'), "First_Name": fname, "Last_Name": lname, "Age": ag, "Password": pword, "Username": uname, "Major": maj, "Graduation_Year": grad, "Job_Experience": jobx, "Current_Employment": curr})
 
-//     var options = { method: 'POST',
-//     url: 'https://duckedin-2987.restdb.io/rest/client',
-//     headers: 
-//     { 'cache-control': 'no-cache',
-//         'x-apikey': '1acf2e675715216ec9b736c94cc52fc10f4b8',
-//         'content-type': 'application/json' },
-//     body: {"ISID": readCookie('ISID'), "First_Name": fname, "Last_Name": lname, "Age": ag, "Password": pword, "Username": uname, "Major": maj, "Graduation_Year": grad, "Job_Experience": jobx, "Current_Employment": curr},
-//     json: true };
+    var original = "https://getpantry.cloud/apiv1/pantry/dd14b579-e07c-4fcc-8e08-534632eb36a9"
+    var basket = original.concat(fname);
 
-//     request(options, function (error, response, body) {
-//     if (error) throw new Error(error);
-//     else{
-//         window.location.href = '../homepage/homepage.html';
-//     }
-
-//     console.log(body);
-//     });
-// }
-  
-    axios.post('https://duckedin-2987.restdb.io/rest/client',{
-        "data": [{"ISID": readCookie('ISID'), "First_Name": fname, "Last_Name": lname, "Age": ag, "Password": pword, "Username": uname, "Major": maj, "Graduation_Year": grad, "Job_Experience": jobx, "Current_Employment": curr}]
-    }).then( response => {
-        console.log(response.data);
-        window.location.href = '../homepage/homepage.html';
-    })
-    .catch(function (error) {
-        console.log(error);
+    let xhr = new XMLHttpRequest();
+    xhr.addEventListener("readystatechange", function() {
+        if(this.readyState === 4 && xhr.status == 200) {
+          console.log(this.responseText);
+          window.location.href = '../homepage/homepage.html';
+        }
     });
+    xhr.open('PUT', original);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(data);
+  
+//     axios.post('https://duckedin-2987.restdb.io/rest/client',{
+//         "data": [{"ISID": readCookie('ISID'), "First_Name": fname, "Last_Name": lname, "Age": ag, "Password": pword, "Username": uname, "Major": maj, "Graduation_Year": grad, "Job_Experience": jobx, "Current_Employment": curr}]
+//     }).then( response => {
+//         console.log(response.data);
+//         window.location.href = '../homepage/homepage.html';
+//     })
+//     .catch(function (error) {
+//         console.log(error);
+//     });
 }
