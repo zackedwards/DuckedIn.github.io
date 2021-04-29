@@ -62,9 +62,3 @@ function submit(){
         console.log(response.data);
     });
 }
-
-function revealForm(){
-    document.getElementById('connectionForm').innerHTML += '<h3> Enter a Username for a new connection here!  </h3>';
-    document.getElementById('connectionForm').innerHTML += '<input type="text" id="newConnection"><br><br>';
-    document.getElementById('connectionForm').innerHTML += '<button onclick="submit()"></button>';
-}

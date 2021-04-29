@@ -4,7 +4,7 @@
        <meta charset="utf-8">
        <title>DuckedIn Homepage</title>
        <link rel="stylesheet" href="connections.css">
-       <script src='../Client Data/pull_Cdata.js'></script>
+
     </head>
     
     <body>
@@ -18,8 +18,9 @@
 
         <h1 id='title'>Connections</h1>
 
-        <form id= 'connectionForm'></form>
-        <button onclick="revealForm()">Add New Connection</button>
+        <h3> Enter a Username for a new connection here! </h3>
+        <input type="text" id="newConnection"><br><br>
+        <button onclick="submit()">Submit</button>
 
         <div id='listedConnections'></div>
 
