@@ -39,8 +39,31 @@ function readCookie(name) {
     return null;
 }
 
+function submit(){
+    var isid = readCookie('ISID');
+    var link = 'https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Post_Data/ISID/' + isid;
+    var username = document.getElementById('newConnection').innerHTML;
+
+    axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
+        .then( response => {
+            var users = response.data;
+            for (i=0; i < users.length; i++){
+                if(users[i].ISID == isid){
+                    var connections = users[i].Connected_Usernames
+                    break;
+                }
+            }
+            connections+=' '+username;
+            axios.patch(link,{
+                "data": {'Connected_Usernames': connections}
+            }).then( response => {
+                console.log(response.data);
+            });
+    });
+}
+
 function revealForm(){
     document.getElementById('connectionForm').innerHTML += '<h3> Enter a Username for a new connection here!  </h3>';
     document.getElementById('connectionForm').innerHTML += '<textarea id = "newConnection" name="newConnect" rows = "2" cols = "70"></textarea><br><br>';
-    document.getElementById('connectionForm').innerHTML += '<input type="submit" value="Submit">';
+    document.getElementById('connectionForm').innerHTML += '<input type="submit" value="Submit" onclick="submit()">';
 }

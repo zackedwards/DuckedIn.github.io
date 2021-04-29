@@ -11,7 +11,7 @@ function postData(){
     console.log(title_data);
 
     axios.post('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Post_Data',{
-        "data": {"ISID": readCookie('ISID'), "Title": title_data,"Body": data}
+        "data": {"Posted_By": readCookie('ISID'), "Title": title_data,"Body": data}
     }).then( response => {
         console.log(response.data);
     });

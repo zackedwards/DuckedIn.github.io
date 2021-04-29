@@ -1,6 +1,7 @@
 function cookieAlert(){
     alert('You need cookies enabled in order to use this website!')
 }
+cookieAlert();
 
 var crypt = {
 // (B1) THE SECRET KEY
