@@ -13,9 +13,42 @@ function readCookie(name) {
     return null;
 }
 
+function uniqueID(){
+    axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Post_Data')
+        .then( response => {
+            var posts = response.data;
+            var condition = true;
+            while(condition){
+                var upid = Math.floor(Math.random() * 1000000)
+                for (i=0; i < posts.length; i++){
+                    if(posts[i].UPID == upid){
+                        break;
+                    }
+                }
+                if(i == posts.length){
+                    condition = false;
+                    return upid;
+                }
+            }
+    });
+}
+
+function getUsername() {
+    axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
+    .then( response => {
+        var users = response.data;
+        var isid = readCookie('ISID');
+        for (i=0; i < users.length; i++){
+            if (isid==users[i].ISID){
+                return users[i].Username;
+            }
+        }
+    });
+}
+
 function postData(){
-    var isid = readCookie('ISID');
-    console.log(isid);
+    var uname = getUsername();
+    console.log(uname);
     let today = new Date().toLocaleDateString();
     console.log(today);
     
@@ -24,6 +57,9 @@ function postData(){
 
     var title_data = document.getElementById('postTitle').value;
     console.log(title_data);
+
+    var upid = uniqueID();
+    console.log(upid);
 
     if(document.getElementById('privacyOption2').checked){
         var option = document.getElementById('privacyOption2').value;
@@ -34,9 +70,10 @@ function postData(){
     console.log(option);
 
     axios.post('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Post_Data',{
-        "data": [{"Date _Posted": today, "Type_Of_Post": option, "Posted_By": readCookie('ISID'), "Title": title_data,"Body": data}]
+        "data": [{"UPID": upid, "Date_Posted": today, "Type_Of_Post": option, "Posted_By": uname, "Title": title_data,"Body": data}]
     }).then( response => {
         console.log(response.data);
+        window.location.href = 'homepage/homepage.html';
     })
     .catch(function (error) {
         console.log(error);
