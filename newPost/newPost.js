@@ -17,34 +17,23 @@ function uniqueID(){
     axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Post_Data')
         .then( response => {
             var posts = response.data;
-            var condition = true;
-            while(condition){
-                var upid = Math.floor(Math.random() * 1000000)
-                for (i=0; i < posts.length; i++){
-                    if(posts[i].UPID == upid){
-                        break;
-                    }
-                }
-                if(i == posts.length){
-                    condition = false;
-                    return upid;
-                }
+            for (i=0; i < posts.length; i++){
+                var upid = posts[i].UPID+1;
             }
+            return upid;
     });
 }
 
 function getUsername() {
-    var isid = readCookie('ISID');
-    var link = 'https://sheetdb.io/api/v1/9kxufr2k05mi6/search?ISID=' + isid;
-    axios.get(link)
+    axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
     .then( response => {
         var users = response.data;
-        return users.Username;
-        // for (i=0; i < users.length; i++){
-        //     if (isid==users[i].ISID){
-        //         return users[i].Username;
-        //     }
-        // }
+        var isid = readCookie('ISID');
+        for (i=0; i < users.length; i++){
+            if (isid==users[i].ISID){
+                return users[i].Username;
+            }
+        }
     });
 }
 
