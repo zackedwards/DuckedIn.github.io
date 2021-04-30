@@ -34,15 +34,17 @@ function uniqueID(){
 }
 
 function getUsername() {
-    axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
+    var isid = readCookie('ISID');
+    var link = 'https://sheetdb.io/api/v1/9kxufr2k05mi6/search?ISID=' + isid;
+    axios.get(link)
     .then( response => {
         var users = response.data;
-        var isid = readCookie('ISID');
-        for (i=0; i < users.length; i++){
-            if (isid==users[i].ISID){
-                return users[i].Username;
-            }
-        }
+        return users.Username;
+        // for (i=0; i < users.length; i++){
+        //     if (isid==users[i].ISID){
+        //         return users[i].Username;
+        //     }
+        // }
     });
 }
 
