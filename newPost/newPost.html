@@ -23,15 +23,15 @@
             <textarea id="postTitle" name="title" cols="70" rows="1" placeholder="Title..."></textarea>
             <textarea id = "newpost" name = "newpost" rows = "8" cols = "70" placeholder="Enter Your Post Here"></textarea><br><br>
 
+            <p id='privacyLabel'>Choose whether your post should be public or private (just connections will see it)</p>
             <input type="radio" name="public" id="privacyOption1" value='public' CHECKED>Public<br>
-            <input type="radio" name="private" id="privacyOption2" value='private'>Public<br>
+            <input type="radio" name="private" id="privacyOption2" value='private'>Private<br>
 
 
             <input type = "submit" onclick="postData()" value = "Enter">
         </form>    
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
-        <script src='../index.js'></script>
         <script src="newPost.js"></script>
 
     </body>
