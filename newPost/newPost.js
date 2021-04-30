@@ -31,11 +31,15 @@ function postData(){
     else{
         var option = document.getElementById('privacyOption1').value;
     }
+    console.log(option);
 
     axios.post('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Post_Data',{
-        "data": {"Date _Posted": today, "Type_Of_Post": option, "Posted_By": readCookie('ISID'), "Title": title_data,"Body": data}
+        "data": [{"Date _Posted": today, "Type_Of_Post": option, "Posted_By": readCookie('ISID'), "Title": title_data,"Body": data}]
     }).then( response => {
         console.log(response.data);
+    })
+    .catch(function (error) {
+        console.log(error);
     });
 }
 
