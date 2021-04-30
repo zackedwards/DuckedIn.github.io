@@ -19,6 +19,7 @@ function uniqueID(){
             var posts = response.data;
             for (i=0; i < posts.length; i++){
                 var upid = posts[i].UPID+1;
+                console.log(upid);
             }
             return upid;
     });
@@ -30,6 +31,7 @@ function getUsername() {
         var users = response.data;
         var isid = readCookie('ISID');
         for (i=0; i < users.length; i++){
+            console.log(users[i].Username);
             if (isid==users[i].ISID){
                 return users[i].Username;
             }
@@ -64,7 +66,7 @@ function postData(){
         "data": [{"UPID": uniqueID(), "Date_Posted": today, "Type_Of_Post": option, "Posted_By": getUsername(), "Title": title_data,"Body": data}]
     }).then( response => {
         console.log(response.data);
-        window.location.href = 'homepage/homepage.html';
+        window.location.href = '../homepage/homepage.html';
     })
     .catch(function (error) {
         console.log(error);
