@@ -17,7 +17,7 @@ axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
             }
         }
         createCookie('connects', connections);
-        connections = connections.split(" ");
+        connections = connections.split("&");
         for(j=0; j<connections.length; j++){
             for(k=0; k<users.length; k++){
                 if(users[k].Username == connections[j]){

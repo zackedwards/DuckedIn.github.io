@@ -27,11 +27,11 @@ function uniqueID(){
 }
 
 function getUsername() {
+    var isid = readCookie('ISID');
     axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
     .then( response => {
         var users = response.data;
-        console.log(users, users.length);
-        var isid = readCookie('ISID');
+        console.log('user info: ', users, users.length);
         console.log(isid);
         for (i=0; i < users.length; i++){
             console.log(users[i].Username);
@@ -44,7 +44,6 @@ function getUsername() {
 
 function postData(){
     var uname = getUsername();
-    console.log(uname);
     let today = new Date().toLocaleDateString();
     console.log(today);
     
@@ -66,7 +65,7 @@ function postData(){
     console.log(option);
 
     axios.post('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Post_Data',{
-        "data": [{"UPID": uniqueID(), "Date_Posted": today, "Type_Of_Post": option, "Posted_By": getUsername(), "Title": title_data,"Body": data}]
+        "data": [{"UPID": upid, "Date_Posted": today, "Type_Of_Post": option, "Posted_By": uname, "Title": title_data,"Body": data}]
     }).then( response => {
         console.log(response.data);
         window.location.href = '../homepage/homepage.html';
