@@ -57,7 +57,7 @@ function submit(){
     //var link = 'https://sheetdb.io/api/v1/9kxufr2k05mi6/Client_Data/ISID/'+isid;
     console.log(link);
 
-    axios.patch('https://sheetdb.io/api/v1/9kxufr2k05mi6/ISID/74022&sheet=Client_Data', {
+    axios.patch('https://sheetdb.io/api/v1/9kxufr2k05mi6/ISID/74022?sheet=Client_Data', {
         "data": {'Connected_Usernames': connections}
     }).then( response => {
         console.log(response.data);
