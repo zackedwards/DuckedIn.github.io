@@ -50,3 +50,12 @@ h1{
     height: auto;
     text-align: center;
 }
+
+#individual_post{
+    margin-left: auto; margin-right:auto;
+    border: 1px solid black;
+    background-color: #A32638;
+    width: 500px;
+    height: auto;
+    text-align: center;
+}
