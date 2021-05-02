@@ -66,6 +66,7 @@ function postValues(){
     var lname = document.getElementById('lastname').value;
     var ag = document.getElementById('age').value;
     var pword = crypt.encrypt(document.getElementById('password').value);
+    var mail = document.getElementById('Email').value;
     var uname = document.getElementById('username').value;
     var jobx = document.getElementById('jobexp').value;
     var grad = document.getElementById('gradyear').value;
@@ -73,7 +74,7 @@ function postValues(){
     var curr = document.getElementById('currentemp').value;
 
     axios.post('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data',{
-        "data": [{"ISID": readCookie('ISID'), "First_Name": fname, "Last_Name": lname, "Age": ag, "Password": pword, "Username": uname, "Major": maj, "Graduation_Year": grad, "Job_Experience": jobx, "Current_Employment": curr}]
+        "data": [{"ISID": readCookie('ISID'), "First_Name": fname, "Last_Name": lname, "Age": ag, "Password": pword,"Email": mail, "Username": uname, "Major": maj, "Graduation_Year": grad, "Job_Experience": jobx, "Current_Employment": curr}]
     }).then( response => {
         console.log(response.data);
         window.location.href = '../homepage/homepage.html';
