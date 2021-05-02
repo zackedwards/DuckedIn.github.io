@@ -1,6 +1,6 @@
 /*applies font to whole page*/
 *{font-family: Arial, Helvetica, sans-serif}
-
+/*applies font to whole page*/
 body {
     background: linear-gradient(0deg, #F5F1E4  80%, #A32638 20%);
     background-repeat: no-repeat;
