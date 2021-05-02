@@ -53,7 +53,7 @@ function reloadFeed(){
         console.log(response.data);
         var posts = response.data;
         var connections = readCookie('connects');
-        connections = connections.split('%');
+        connections = connections.split('%25');
         console.log(connections);
 
         if(document.getElementById('privacyOption2').checked){
