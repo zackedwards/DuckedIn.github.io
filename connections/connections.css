@@ -38,6 +38,13 @@ li a:hover {
     background-color: #690312 ;
 }
 
+h1{
+    text-align: center;
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
 .content {
     margin-left: auto; margin-right:auto;
     border: 1px solid black;
@@ -45,4 +52,6 @@ li a:hover {
     width: 300px;
     height: auto;
     text-align: center;
+    border-radius: 30px;
+    padding: 20px;
 }

@@ -22,7 +22,7 @@ axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Ordered_Post')
             if(posts[i].Type_Of_Post != 'private'){
                 document.getElementById('postDisplay').innerHTML += '<div id="individual_post"><h2 id="title"> Title: ' + posts[i].Title +  '</h2>';
                 document.getElementById('postDisplay').innerHTML += '<h3 id="body">'+ posts[i].Body +'</h3>';
-                document.getElementById('postDisplay').innerHTML += '<p id="info"> Posted by: '+ posts[i].Posted_By+' Posted on:'+ posts[i].Date_Posted +'</p></div><br><br>';
+                document.getElementById('postDisplay').innerHTML += '<p id="info"> Posted by: '+ posts[i].Posted_By+' Posted on:'+ posts[i].Date_Posted +'</p></div><br>';
             }
         }
     });
