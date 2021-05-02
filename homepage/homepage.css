@@ -40,22 +40,67 @@ li a:hover {
 
 h1{
     text-align: center;
-}
-
-#postDisplay {
-    margin-left: auto; margin-right:auto;
-    border: 1px solid black;
-    background-color: white;
-    width: 500px;
-    height: auto;
-    text-align: center;
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
 }
 
 #individual_post{
-    margin-left: auto; margin-right:auto;
+    margin-left: auto;
+    margin-right: auto;
     border: 1px solid black;
-    background-color: #A32638;
-    width: 500px;
+    background-color: rgb(197, 197, 197)/*#A32638*/;
+    width: 750px;
+    height: 75px;
+    text-align: center;
+    border-radius: 30px 30px 0px 0px;
+    margin-bottom: -20px;
+    padding-top: 5px;
+}
+
+#body{
+    margin-left: auto;
+    margin-right: auto;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    background-color: white;
+    width: 750px;
+    min-height: 150px;
     height: auto;
     text-align: center;
+    padding-top:20px;
+
 }
+
+#info{
+    margin-top: -20px;
+    margin-left: auto;
+    margin-right: auto;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    background-color: white;
+    width: 750px;
+    height: auto;
+    text-align: center;
+    border-radius: 0px 0px 30px 30px;
+    padding-bottom: 20px;
+}
+
+
+/*
+#postDisplay {
+    margin-left: auto;
+    margin-right: auto;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    background-color: white;
+    width: 750px;
+    height: auto;
+    text-align: center;
+    border-radius: 30px;
+    background-repeat: repeat;
+}
+*/

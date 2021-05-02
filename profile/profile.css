@@ -40,14 +40,17 @@ li a:hover {
     /*was #4CAF50 (green)*/
 }
 
-h1 {
+h2 {
     text-align: center;
     font-size: 32px;
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
 }
 
 .user{
     text-align: left;
-    font-size: 28px;
+    font-size: 24px;
 }
 
 .name{
@@ -80,17 +83,12 @@ h1 {
     font-size: 24px;
 }
 
-/*what is hr?? */
-hr{
-    border-top: 5px solid black;
-    margin: 2em 0;
-}
-
 .content {
     margin-left: auto; margin-right:auto;
     border: 1px solid black;
     background-color: white;
-    width: 600px;
-    height: 900px;
-    text-align: center;
+    width: 500px;
+    height: 320px;
+    border-radius: 30px;
+    padding: 20px;
 }
