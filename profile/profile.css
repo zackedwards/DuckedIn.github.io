@@ -48,41 +48,10 @@ h2 {
     -webkit-text-stroke-color: black;
 }
 
-.user{
+h1 {
     text-align: left;
     font-size: 24px;
 }
-
-.name{
-    text-align: left;
-    font-size: 24px;
-}
-
-.age{
-    text-align: left;
-    font-size: 24px;
-}
-
-.major{
-    text-align: left;
-    font-size: 24px;
-}
-
-.grad{
-    text-align: left;
-    font-size: 24px;
-}
-
-.employ{
-    text-align: left;
-    font-size: 24px;
-}
-
-.exper{
-    text-align: left;
-    font-size: 24px;
-}
-
 .content {
     margin-left: auto; margin-right:auto;
     border: 1px solid black;
