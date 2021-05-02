@@ -39,6 +39,7 @@ function getUsername() {
                 return users[i].Username;
             }
         }
+        return 'unknown'
     });
 }
 

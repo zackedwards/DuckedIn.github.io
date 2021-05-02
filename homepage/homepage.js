@@ -54,6 +54,7 @@ function reloadFeed(){
         var posts = response.data;
         var connections = readCookie('connects');
         connections = connections.split('%');
+        console.log(connections);
 
         if(document.getElementById('privacyOption2').checked){
             document.getElementById('postDisplay').innerHTML = '';

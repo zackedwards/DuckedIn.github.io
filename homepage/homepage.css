@@ -87,6 +87,15 @@ h1{
     border-radius: 0px 0px 30px 30px;
     padding-bottom: 20px;
 }
+#privacyLabel{
+    text-align: center;
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+input{
+    text-align: center;
+}
 
 
 
