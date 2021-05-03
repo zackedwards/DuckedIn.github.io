@@ -13,8 +13,15 @@ function readCookie(name) {
     return null;
 }
 
-async function uniqueID(){
-    await axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Post_Data')
+function createCookie(key, value) {
+    const cookie = escape(key) + "=" + escape(value);
+    document.cookie = cookie;
+    console.log(cookie);
+    console.log("Creating new cookie with key: " + key + " value: " + value);
+}
+
+function uniqueID(){
+    axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Post_Data')
         .then( response => {
             var posts = response.data;
             console.log('Looking for id');
@@ -26,9 +33,9 @@ async function uniqueID(){
     });
 }
 
-async function getUsername() {
+function getUsername() {
     var isid = readCookie('ISID');
-    await axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
+    axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
     .then( response => {
         var users = response.data;
         console.log('user info: ', users, users.length);
@@ -43,8 +50,11 @@ async function getUsername() {
     });
 }
 
-async function postData(){
-    var uname = await getUsername();
+createCookie('username', getUsername());
+createCookie('upid', uniqueID());
+
+function postData(){
+    var uname = readCookie('username');
     let today = new Date().toLocaleDateString();
     console.log(today);
     
@@ -54,7 +64,7 @@ async function postData(){
     var title_data = document.getElementById('postTitle').value;
     console.log(title_data);
 
-    var upid = await uniqueID();
+    var upid = readCookie('upid');
     console.log(upid);
 
     if(document.getElementById('privacyOption2').checked){
@@ -65,7 +75,7 @@ async function postData(){
     }
     console.log(option);
 
-    await axios.post('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Post_Data',{
+    axios.post('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Post_Data',{
         "data": [{"UPID": upid, "Date_Posted": today, "Type_Of_Post": option, "Posted_By": uname, "Title": title_data,"Body": data}]
     }).then( response => {
         console.log(response.data);
