@@ -89,18 +89,28 @@ h1{
 }
 #privacyLabel{
     text-align: center;
-    color: white;
-    font-size: large;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
+    color: black;
+    font-size: x-large;
 }
+
 .option{
     margin-left: auto;
     margin-right: auto;
     text-align: center;
 }
 
-
+#optionbar{
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+    background-color: rgb(197, 197, 197)/*#A32638*/;
+    width: 750px;
+    height: 110px;
+    text-align: center;
+    border-radius: 30px 30px 30px 30px;
+    margin-bottom: 40px;
+    padding-top: 5px;
+}
 
 /*
 #postDisplay {
