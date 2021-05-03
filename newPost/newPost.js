@@ -26,7 +26,7 @@ function uniqueID(){
     });
 }
 
-async function getUsername() {
+function getUsername() {
     var isid = readCookie('ISID');
     axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
     .then( response => {
@@ -44,7 +44,7 @@ async function getUsername() {
 }
 
 function postData(){
-    var uname = await getUsername();
+    var uname = getUsername();
     let today = new Date().toLocaleDateString();
     console.log(today);
     
