@@ -23,9 +23,9 @@ axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
                 if(users[k].Username == connections[j]){
                     var fname = users[k].First_Name;
                     var lname = users[k].Last_Name;
-                    var space = " ";
-                    var name = fname.concat(space, lname);
-                    document.getElementById('listedConnections').innerHTML += '<p>' + name +  '</p>';
+                    var name = fname.concat(" ", lname);
+                    var newLine = '<a href= ../connectedProfile/connectedProfile.html?connection='+ users[k].Username +'>' + name +  '</a>';
+                    document.getElementById('listedConnections').innerHTML += newLine;
                 }
             }
         }

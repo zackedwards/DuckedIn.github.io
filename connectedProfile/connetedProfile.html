@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta charset="utf-8">
+       <title>DuckedIn Profile</title>
+       <link rel="stylesheet" href="connectedProfile.css">
+    </head>
+
+    <body>
+        <ul id=nav_bar>
+            <li><a href="../homepage/homepage.html">Homepage</a></li>
+            <li><a href="../connections/connections.html">Connections</a></li>
+            <li><a href="../newPost/newPost.html">Create a Post</a></li>
+            <li style="float:right"><a class="active" href="../profile/profile.html">Profile</a></li>
+            <li style="float:right"><a href="../index.html", onclick="logout()">Logout</a></li>
+        </ul>
+
+        
+
+        <h2>Profile</h2>
+        
+        <div class='content'>
+
+            <h1 class = "user">Username: </h1>
+            <p id = 'info'></p>
+
+            <h1 class = "name">Name: </h1> 
+            <p id = 'info'></p>
+
+            <h1 class = "age">Age: </h1> 
+            <p id = 'info'></p>
+
+            <h1 class = "major">Major: </h1> 
+            <p id = 'info'></p>
+
+            <h1 class = "grad">Graduation Year: </h1> 
+            <p id = 'info'></p>
+
+            <h1 class = "employ">Current Employment: </h1> 
+            <p id = 'info'></p>
+
+            <h1 class = "exper">Job Experience: </h1> 
+            <p id = 'info'></p>
+
+            <h1 class = "Email">Email: </h1> 
+            <a id = 'info'></a>
+            <!--Between these comments is where the actual body is-->
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+            <script src="profile.js"></script>
+        </div>
+    </body>
+</html>
