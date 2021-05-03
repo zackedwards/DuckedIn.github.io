@@ -50,6 +50,9 @@ function getUsername() {
     });
 }
 
+getUsername();
+uniqueID();
+
 function postData(){
     var uname = readCookie('username');
     let today = new Date().toLocaleDateString();
