@@ -50,8 +50,10 @@ function getUsername() {
     });
 }
 
-createCookie('username', getUsername());
-createCookie('upid', uniqueID());
+var username = getUsername();
+createCookie('username', username);
+var uniqueUpid = uniqueID();
+createCookie('upid', uniqueUpid);
 
 function postData(){
     var uname = readCookie('username');
