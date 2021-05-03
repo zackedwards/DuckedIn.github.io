@@ -16,7 +16,6 @@ function readCookie(name) {
 function createCookie(key, value) {
     const cookie = escape(key) + "=" + escape(value);
     document.cookie = cookie;
-    console.log(cookie);
     console.log("Creating new cookie with key: " + key + " value: " + value);
 }
 
@@ -27,8 +26,8 @@ function uniqueID(){
             console.log('Looking for id');
             for (i=0; i < posts.length; i++){
                 var upid = posts[i].UPID+1;
-                console.log(upid);
             }
+            createCookie('upid', upid);
             return upid;
     });
 }
@@ -43,17 +42,13 @@ function getUsername() {
         for (i=0; i < users.length; i++){
             console.log(users[i].Username);
             if (isid==users[i].ISID){
+                createCookie('username', users[i].Username);
                 return users[i].Username;
             }
         }
         return 'unknown'
     });
 }
-
-var username = getUsername();
-createCookie('username', username);
-var uniqueUpid = uniqueID();
-createCookie('upid', uniqueUpid);
 
 function postData(){
     var uname = readCookie('username');
