@@ -13,8 +13,8 @@ function readCookie(name) {
     return null;
 }
 
-function uniqueID(){
-    axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Post_Data')
+async function uniqueID(){
+    await axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Post_Data')
         .then( response => {
             var posts = response.data;
             console.log('Looking for id');
@@ -54,7 +54,7 @@ async function postData(){
     var title_data = document.getElementById('postTitle').value;
     console.log(title_data);
 
-    var upid = uniqueID();
+    var upid = await uniqueID();
     console.log(upid);
 
     if(document.getElementById('privacyOption2').checked){
