@@ -65,7 +65,7 @@ async function postData(){
     }
     console.log(option);
 
-    axios.post('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Post_Data',{
+    await axios.post('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Post_Data',{
         "data": [{"UPID": upid, "Date_Posted": today, "Type_Of_Post": option, "Posted_By": uname, "Title": title_data,"Body": data}]
     }).then( response => {
         console.log(response.data);
