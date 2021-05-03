@@ -25,7 +25,7 @@ function uniqueID(){
             var posts = response.data;
             console.log('Looking for id');
             for (i=0; i < posts.length; i++){
-                var upid = posts[i].UPID+1;
+                var upid = parseInt(posts[i].UPID)+1;
             }
             createCookie('upid', upid);
             return upid;
