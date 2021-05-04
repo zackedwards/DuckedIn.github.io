@@ -23,7 +23,6 @@ function uniqueID(){
     axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Post_Data')
         .then( response => {
             var posts = response.data;
-            console.log('Looking for id');
             for (i=0; i < posts.length; i++){
                 var upid = parseInt(posts[i].UPID)+1;
             }
@@ -37,10 +36,7 @@ function getUsername() {
     axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
     .then( response => {
         var users = response.data;
-        console.log('user info: ', users, users.length);
-        console.log(isid);
         for (i=0; i < users.length; i++){
-            console.log(users[i].Username);
             if (isid==users[i].ISID){
                 createCookie('username', users[i].Username);
                 return users[i].Username;
