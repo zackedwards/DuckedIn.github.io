@@ -50,12 +50,8 @@ function submit(){
     var isid = readCookie('ISID');
 
     var username = document.getElementById('newConnection').value;
-    console.log(username)
     var connections = unescape(readCookie('connects')) +'%'+username;
-    console.log(connections);
     var link = 'https://sheetdb.io/api/v1/9kxufr2k05mi6/ISID/' + isid +'?sheet=Client_Data';
-    //var link = 'https://sheetdb.io/api/v1/9kxufr2k05mi6/Client_Data/ISID/'+isid;
-    console.log(link);
 
     axios.patch(link, {
         "data": {'Connected_Usernames': connections}

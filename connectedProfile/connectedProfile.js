@@ -59,6 +59,7 @@ axios.get('https://sheetdb.io/api/v1/9kxufr2k05mi6?sheet=Client_Data')
 
             var uname = document.getElementsByTagName('p')[7];
             celltext = document.createTextNode(users[i].Email);
+            console.log(users[i].Email);
             uname.appendChild(celltext);
             var emailLink = 'mailto:' + users[i].Email;
             uname.setAttribute('href', emailLink);
